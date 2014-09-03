@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<artifactId>androidannotations-parent</artifactId>
+		<groupId>org.androidannotations</groupId>
+		<version>3.0.1</version>
+	</parent>
+
+	<artifactId>functional-test-1-5</artifactId>
+	<packaging>apk</packaging>
+	<name>functional-test-1-5</name>
+
+	<properties>
+		<spring-android-version>1.0.0.RELEASE</spring-android-version>
+		<jackson-version>1.7.2</jackson-version>
+		<simple-version>2.4.1</simple-version>
+		<android-rome-version>1.0.0-r2</android-rome-version>
+	</properties>
+	
+	<dependencies>
+		<dependency>
+			<groupId>org.androidannotations</groupId>
+			<artifactId>androidannotations</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.androidannotations</groupId>
+			<artifactId>androidannotations-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.google.android</groupId>
+			<artifactId>android</artifactId>
+			<version>4.0.1.2</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.google.android</groupId>
+			<artifactId>android-test</artifactId>
+			<version>4.0.1.2</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.roboguice</groupId>
+			<artifactId>roboguice</artifactId>
+			<version>1.1.2</version>
+		</dependency>
+		<dependency>
+			<groupId>com.j256.ormlite</groupId>
+			<artifactId>ormlite-android</artifactId>
+			<version>4.41</version>
+		</dependency>
+		<dependency>
+			<!-- spring-android-rest-template is required to use the Rest API -->
+			<groupId>org.springframework.android</groupId>
+			<artifactId>spring-android-rest-template</artifactId>
+			<version>${spring-android-version}</version>
+		</dependency>
+		<dependency>
+			<!-- Using Jackson for JSON marshaling -->
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>${jackson-version}</version>
+		</dependency>
+		<dependency>
+			<!-- Using Simple for XML marshaling -->
+			<groupId>org.simpleframework</groupId>
+			<artifactId>simple-xml</artifactId>
+			<version>${simple-version}</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>stax</artifactId>
+					<groupId>stax</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>stax-api</artifactId>
+					<groupId>stax</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+        <dependency>
+            <groupId>com.google.android</groupId>
+            <artifactId>support-v4</artifactId>
+            <version>r7</version>
+        </dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>com.jayway.maven.plugins.android.generation2</groupId>
+				<artifactId>android-maven-plugin</artifactId>
+				<version>3.6.0</version>
+				<configuration>
+					<sdk>
+						<platform>14</platform>
+					</sdk>
+					<dex>
+						<jvmArguments>
+							<jvmArgument>-Xmx512m</jvmArgument>
+						</jvmArguments>
+					</dex>
+				</configuration>
+				<extensions>true</extensions>
+			</plugin>
+
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+					<showWarnings>true</showWarnings>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-deploy-plugin</artifactId>
+				<configuration>
+					<skip>true</skip>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
