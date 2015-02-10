@@ -25,7 +25,7 @@ public MyBean implements IMyBean(){
   }
 }
 ```
-##In Activity,Fragment,Service or only a commen Class
+##In Activity,Fragment,Service or only a common Class
 ```
 @EActivity(R.layout.layout_main)
 public MyActivity{
