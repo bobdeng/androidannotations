@@ -44,4 +44,49 @@ public MyActivity{
   }
 }
 ```
+#EIntent,IntentExtra
+```
+@EIntent("BroadcastAction-XX")
+public class MyIntent(){
+  @IntentExtra
+  public String name;
+  @IntentExtra(IntentObjectType.PARCELABLE)
+  public UserInfo userInfo;
+  @IntentExtra
+  public SerializableObject obj;
+}
+```
+###sendBroadCast
+```
+sendBroadCast(new MyIntent_().setName("name").setUserInfo(userInfo).getIntent());
+```
+###receive broadcast
+```
+MyIntent_ myIntent=MyIntent_.build(intent);
+myIntent.getName()
+```
+#ContextEvent
+###Write a event interface
+```
+public interface IMyEvent(){
+	public void onEvent1(String action);
+}
+```
+###In Fragment,Adapter,View..
+```
+@ContextEvent
+IMyEvent myEvent;
+.............
+myEvent.onEvent1("action");
+
+```
+###In activity
+```
+//Not necessary,but recommend implements IMyEvent
+implements IMyEvent
+public void onEvent1(String action){
+	//do something
+}
+```
+
 [AndroidAnnotations](http://androidannotations.org/)

@@ -58,7 +58,7 @@ public class EIntentExtraHandler extends BaseAnnotationHandler<IntentBuilder> {
        setPut(putIntent,element);
        TypeMirror elementType = element.asType();
         elementType = holder.processingEnvironment().getTypeUtils().erasure(elementType);
-    
+
        JClass clz=codeModelHelper.typeMirrorToJClass(elementType,holder);
        setSetter(element,holder,clz);
        setGetter(element,holder,clz);

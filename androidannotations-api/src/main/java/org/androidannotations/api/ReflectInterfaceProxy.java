@@ -24,6 +24,7 @@ public class ReflectInterfaceProxy implements InvocationHandler {
             targetMethod=getMethod(obj.getClass().getSuperclass(),method.getName(),args);
         }
         if(targetMethod!=null){
+            targetMethod.setAccessible(true);
             return targetMethod.invoke(obj,objects);
         }else{
             System.out.println("response method not implement:"+method.getName());
