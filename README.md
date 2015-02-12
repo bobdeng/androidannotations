@@ -7,14 +7,14 @@ public interface MyView{
 ```
 ###Declare bean interface
 ```
-public interface IMyBean(){
+public interface IMyBean{
   public void getUserName();
 }
 ```
 ###Implement bean
 ```
 @EBean
-public MyBean implements IMyBean(){
+public MyBean implements IMyBean{
   @ViewInterface //New Annotation
   MyView myView;
   @Override
@@ -47,7 +47,7 @@ public MyActivity{
 #EIntent,IntentExtra
 ```
 @EIntent("BroadcastAction-XX")
-public class MyIntent(){
+public class MyIntent{
   @IntentExtra
   public String name;
   @IntentExtra(IntentObjectType.PARCELABLE)
@@ -68,7 +68,7 @@ myIntent.getName()
 #ContextEvent
 ###Write a event interface
 ```
-public interface IMyEvent(){
+public interface IMyEvent{
 	public void onEvent1(String action);
 }
 ```
