@@ -16,7 +16,6 @@
 package org.androidannotations.holder;
 
 import com.sun.codemodel.*;
-import org.androidannotations.annotations.mvc.MVCAdapter;
 import org.androidannotations.helper.ActionBarSherlockHelper;
 import org.androidannotations.helper.AnnotationHelper;
 import org.androidannotations.process.ProcessHolder;
@@ -66,40 +65,7 @@ public class EFragmentHolder extends EComponentWithViewSupportHolder implements 
 	private JBlock onPauseBeforeSuperBlock;
 	private JBlock onAttachAfterSuperBlock;
 	private JBlock onDetachBeforeSuperBlock;
-    //palmwin begin
-    private JMethod onDestroy=null;
-    public JMethod getOnDestroy(){
-        if(onDestroy==null){
-            onDestroy = generatedClass.method(PUBLIC, codeModel().VOID, "onDetach");
-            onDestroy.annotate(Override.class);
-            JBlock onDestroyBody = onDestroy.body();
-            onDestroyBody.invoke(_super(), onDestroy);
-        }
-        return onDestroy;
-    }
 
-    public JMethod getOnRegister(){
-        if(onRegister==null){
-            onRegister = generatedClass.method(PUBLIC, codeModel().VOID, "onAttach");
-            JVar activity=onRegister.param(classes().ACTIVITY,"activity");
-            onRegister.annotate(Override.class);
-            JBlock onRegisterBody = onRegister.body();
-            onRegisterBody.invoke(_super(), onRegister).arg(activity);
-        }
-        return onRegister;
-    }
-    @Override
-    public boolean needMvcAdapter() {
-        return true;
-    }
-    public JMethod getCreateMvcMethod(){
-        return getOnRegister();
-    }
-    @Override
-    public JExpression getNewMvcAdapter() {
-        return _new(refClass(MVCAdapter.class)).arg(_this().invoke("getActivity"));
-    }
-    //palmwin end
 	public EFragmentHolder(ProcessHolder processHolder, TypeElement annotatedElement) throws Exception {
 		super(processHolder, annotatedElement);
 		instanceStateHolder = new InstanceStateHolder(this);
@@ -296,7 +262,7 @@ public class EFragmentHolder extends EComponentWithViewSupportHolder implements 
 	}
 
 	private void setOnAttach() {
-		JMethod onAttach = this.getOnRegister();
+		JMethod onAttach =  generatedClass.method(PUBLIC, codeModel().VOID, "onAttach");
 		JBlock onAttachBody = onAttach.body();
 		onAttachAfterSuperBlock = onAttachBody.block();
 	}
@@ -318,7 +284,7 @@ public class EFragmentHolder extends EComponentWithViewSupportHolder implements 
 	}
 
 	private void setOnDetach() {
-		JMethod onDetach = this.getOnDestroy();
+		JMethod onDetach = generatedClass.method(PUBLIC, codeModel().VOID, "onDetach");
 		JBlock onDetachBody = onDetach.body();
 		onDetachBeforeSuperBlock = onDetachBody.block();
 	}

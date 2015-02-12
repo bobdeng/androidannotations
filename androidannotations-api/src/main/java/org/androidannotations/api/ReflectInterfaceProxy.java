@@ -7,13 +7,13 @@ import java.lang.reflect.Proxy;
 /**
  * Created by zhiguodeng on 15-2-10.
  */
-public class ViewInterfaceProxy implements InvocationHandler {
+public class ReflectInterfaceProxy implements InvocationHandler {
     Object obj;
-    public ViewInterfaceProxy(Object obj){
+    public ReflectInterfaceProxy(Object obj){
         this.obj=obj;
     }
     public static Object newInstance(Class interfaceClass,Object viewObject) {
-        return Proxy.newProxyInstance(interfaceClass.getClassLoader(),new Class[]{interfaceClass},new ViewInterfaceProxy(viewObject));
+        return Proxy.newProxyInstance(interfaceClass.getClassLoader(),new Class[]{interfaceClass},new ReflectInterfaceProxy(viewObject));
     }
     @Override
     public Object invoke(Object o, Method method, Object[] objects) throws Throwable {

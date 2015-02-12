@@ -1,12 +1,15 @@
-package org.androidannotations.annotations.mvc;
+package org.androidannotations.annotations;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-@Retention(RetentionPolicy.SOURCE)
+/**
+ * Created by zhiguodeng on 15-2-11.
+ */
+@Retention(RetentionPolicy.CLASS)
 @Target(ElementType.TYPE)
-public @interface EAction {
-    Class action();
+public @interface EIntent {
+    String value() default "";
 }

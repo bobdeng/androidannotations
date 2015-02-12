@@ -39,20 +39,7 @@ public class EProviderHolder extends EComponentHolder {
 		contextRef = invoke("getContext");
 	}
 
-    @Override
-    public JMethod getOnDestroy() {
-        return null;
-    }
 
-    @Override
-    public JExpression getNewMvcAdapter() {
-        return null;
-    }
-
-    @Override
-    public boolean needMvcAdapter() {
-        return false;
-    }
 	@Override
 	protected void setInit() {
 		init = generatedClass.method(PRIVATE, codeModel().VOID, "init_");

@@ -33,20 +33,7 @@ public class EReceiverHolder extends EComponentHolder {
 	private JVar onReceiveContext;
 	private JMethod onReceiveMethod;
 
-    @Override
-    public JMethod getOnDestroy() {
-        return null;
-    }
 
-    @Override
-    public JExpression getNewMvcAdapter() {
-        return null;
-    }
-
-    @Override
-    public boolean needMvcAdapter() {
-        return false;
-    }
 	public EReceiverHolder(ProcessHolder processHolder, TypeElement annotatedElement) throws Exception {
 		super(processHolder, annotatedElement);
 	}

@@ -35,19 +35,6 @@ public class EBeanHolder extends EComponentWithViewSupportHolder {
 	private JFieldVar contextField;
     private JFieldVar viewField;
 	private JMethod constructor;
-    @Override
-    public JMethod getOnDestroy() {
-        return null;
-    }
-    @Override
-    public boolean needMvcAdapter() {
-        return false;
-    }
-
-    @Override
-    public JExpression getNewMvcAdapter() {
-        return null;
-    }
 	public EBeanHolder(ProcessHolder processHolder, TypeElement annotatedElement) throws Exception {
 		super(processHolder, annotatedElement);
 		setConstructor();

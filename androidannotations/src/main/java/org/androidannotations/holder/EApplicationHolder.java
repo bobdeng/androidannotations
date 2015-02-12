@@ -25,7 +25,6 @@ import static com.sun.codemodel.JMod.STATIC;
 import javax.lang.model.element.TypeElement;
 
 import com.sun.codemodel.*;
-import org.androidannotations.annotations.mvc.MVCAdapter;
 import org.androidannotations.process.ProcessHolder;
 
 public class EApplicationHolder extends EComponentHolder {
@@ -34,30 +33,7 @@ public class EApplicationHolder extends EComponentHolder {
 
 	private JFieldVar staticInstanceField;
 
-    //palmwin start
-    private JMethod onDestroy;
-    @Override
-    public JMethod getOnDestroy() {
-        if(onDestroy==null){
-            onDestroy = generatedClass.method(PUBLIC, codeModel().VOID, "onTerminate");
-            onDestroy.annotate(Override.class);
-            JBlock onDestroyBody = onDestroy.body();
-            onDestroyBody.invoke(_super(), onDestroy);
 
-        }
-        return onDestroy;
-    }
-
-    @Override
-    public JExpression getNewMvcAdapter() {
-        return _new(refClass(MVCAdapter.class)).arg(_this());
-    }
-
-    @Override
-    public boolean needMvcAdapter() {
-        return true;
-    }
-    //palmwin end
 	public EApplicationHolder(ProcessHolder processHolder, TypeElement annotatedElement) throws Exception {
 		super(processHolder, annotatedElement);
 		createSingleton();

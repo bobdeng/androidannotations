@@ -16,7 +16,6 @@
 package org.androidannotations.holder;
 
 import com.sun.codemodel.*;
-import org.androidannotations.annotations.mvc.MVCAdapter;
 import org.androidannotations.helper.AndroidManifest;
 import org.androidannotations.helper.IntentBuilder;
 import org.androidannotations.helper.ServiceIntentBuilder;
@@ -37,29 +36,8 @@ public class EServiceHolder extends EComponentHolder implements HasIntentBuilder
 	private ReceiverRegistrationHolder receiverRegistrationHolder;
 	private JBlock onDestroyBeforeSuperBlock;
 
-    //palmwin start
-    private JMethod onDestroy;
-    @Override
-    public JMethod getOnDestroy() {
-        if(onDestroy==null){
-            onDestroy = generatedClass.method(PUBLIC, codeModel().VOID, "onDestroy");
-            onDestroy.annotate(Override.class);
-            JBlock onDestroyBody = onDestroy.body();
-            onDestroyBody.invoke(_super(), onDestroy);
 
-        }
-        return onDestroy;
-    }
 
-    @Override
-    public JExpression getNewMvcAdapter() {
-        return _new(refClass(MVCAdapter.class)).arg(_this());
-    }
-    @Override
-    public boolean needMvcAdapter() {
-        return true;
-    }
-    //palmwin end
 	public EServiceHolder(ProcessHolder processHolder, TypeElement annotatedElement, AndroidManifest androidManifest) throws Exception {
 		super(processHolder, annotatedElement);
 		receiverRegistrationHolder = new ReceiverRegistrationHolder(this);
@@ -92,7 +70,7 @@ public class EServiceHolder extends EComponentHolder implements HasIntentBuilder
 	}
 
 	private void setOnDestroy() {
-		JMethod onDestroy = this.getOnDestroy();
+		JMethod onDestroy = generatedClass.method(PUBLIC, codeModel().VOID, "onDestroy");
 		JBlock onDestroyBody = onDestroy.body();
 		onDestroyBeforeSuperBlock = onDestroyBody.block();
 	}

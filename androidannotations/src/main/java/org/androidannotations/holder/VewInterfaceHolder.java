@@ -16,7 +16,6 @@
 package org.androidannotations.holder;
 
 import com.sun.codemodel.*;
-import org.androidannotations.annotations.mvc.MVCAdapter;
 import org.androidannotations.process.ProcessHolder;
 
 import javax.lang.model.element.Element;
@@ -36,24 +35,6 @@ public class VewInterfaceHolder extends EComponentWithViewSupportHolder {
     public VewInterfaceHolder(ProcessHolder processHolder, TypeElement annotatedElement) throws Exception {
         super(processHolder, annotatedElement);
     }
-
-    //palmwin start
-    @Override
-    public JMethod getOnDestroy() {
-        return null;
-    }
-
-    @Override
-    public JExpression getNewMvcAdapter() {
-        return _new(refClass(MVCAdapter.class)).arg(_this().invoke("getContext"));
-    }
-
-    @Override
-    public boolean needMvcAdapter() {
-        return false;
-    }
-    //palmwin end
-
 
     JBlock initBody;
 	@Override

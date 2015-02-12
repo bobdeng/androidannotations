@@ -29,8 +29,6 @@ import javax.lang.model.element.TypeElement;
 import javax.lang.model.type.TypeMirror;
 
 import com.sun.codemodel.*;
-import org.androidannotations.annotations.fragment.FragmentEventListener;
-import org.androidannotations.annotations.mvc.MVCAdapter;
 import org.androidannotations.handler.FragmentArgHandler;
 import org.androidannotations.helper.CaseHelper;
 import org.androidannotations.helper.ModelConstants;
@@ -46,57 +44,7 @@ public abstract class EComponentHolder extends BaseGeneratedClassHolder {
 	private JFieldVar powerManagerRef;
 	private Map<TypeMirror, JFieldVar> databaseHelperRefs = new HashMap<TypeMirror, JFieldVar>();
 	private JVar handler;
-    ////add by palmwin
-    protected JFieldVar mvcAdapterField;
-    protected  JMethod onRegister;
-    protected  JMethod onEvent;
-    protected JSwitch eventSwitch;
-    public JMethod getOnEvent(){
-        if(onEvent==null){
-            generatedClass._implements(refClass(FragmentEventListener.class));
-            onEvent=generatedClass.method(PUBLIC,codeModel().VOID,"onFragmentEvent");
-            onEvent.param(int.class,"event");
-            onEvent.varParam(Object.class,"args");
-            onEvent.annotate(Override.class);
-            eventSwitch=onEvent.body()._switch(onEvent.params().get(0));
-            eventSwitch._default().body()._break();
-        }
-        return onEvent;
-    }
-    public JSwitch getEventSwitch(){
-        return eventSwitch;
-    }
-    public void createMvcAdapter(){
-        if(mvcAdapterField==null)
-        {
-            mvcAdapterField= generatedClass.field(PRIVATE,refClass(MVCAdapter.class),"mMvcAdapter");
-            JBlock init= getCreateMvcMethod().body();
-            init.assign(mvcAdapterField,getNewMvcAdapter());
-            JBlock regBody=getOnRegister().body();
-            if(this.needMvcAdapter()){
-                regBody.invoke(getMvcAdapterField(),"register").arg(_this());
-                JMethod onDestroy=getOnDestroy();
-                if(onDestroy!=null){
-                    JBlock destroyBody=onDestroy.body();
-                    destroyBody.invoke(getMvcAdapterField(),"unregister");
-                }
-            }
 
-        }
-    }
-    public abstract JMethod getOnDestroy();
-    public JMethod getOnRegister(){
-        return getInit();
-    }
-    public JMethod getCreateMvcMethod(){
-        return getInit();
-    }
-    public  abstract JExpression getNewMvcAdapter();
-    public abstract boolean needMvcAdapter();
-    public JFieldVar getMvcAdapterField(){
-        return mvcAdapterField;
-    }
-    ///end by palmwin
 	public EComponentHolder(ProcessHolder processHolder, TypeElement annotatedElement) throws Exception {
 		super(processHolder, annotatedElement);
 	}

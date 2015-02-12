@@ -19,10 +19,11 @@ import com.sun.codemodel.JBlock;
 import com.sun.codemodel.JClass;
 import com.sun.codemodel.JExpression;
 import com.sun.codemodel.JFieldRef;
-import org.androidannotations.annotations.FragmentActivity;
-import org.androidannotations.annotations.ViewInterface;
+import org.androidannotations.annotations.ContextEvent;
+import org.androidannotations.api.ReflectInterfaceProxy;
 import org.androidannotations.helper.APTCodeModelHelper;
 import org.androidannotations.helper.TargetAnnotationHelper;
+import org.androidannotations.holder.EBeanHolder;
 import org.androidannotations.holder.EComponentHolder;
 import org.androidannotations.holder.EFragmentHolder;
 import org.androidannotations.model.AnnotationElements;
@@ -37,22 +38,22 @@ import static com.sun.codemodel.JExpr.cast;
 import static com.sun.codemodel.JExpr.ref;
 import static org.androidannotations.helper.ModelConstants.GENERATION_SUFFIX;
 
-public class FragmentActivityHandler extends BaseAnnotationHandler<EFragmentHolder> {
+public class ContextEventHandler extends BaseAnnotationHandler<EComponentHolder> {
     private TargetAnnotationHelper annotationHelper;
     private APTCodeModelHelper codeModelHelper = new APTCodeModelHelper();
 
-    public FragmentActivityHandler(ProcessingEnvironment processingEnvironment) {
-		super(FragmentActivity.class, processingEnvironment);
+    public ContextEventHandler(ProcessingEnvironment processingEnvironment) {
+		super(ContextEvent.class, processingEnvironment);
         annotationHelper = new TargetAnnotationHelper(processingEnv, getTarget());
 	}
 
 	@Override
 	public void validate(Element element, AnnotationElements validatedElements, IsValid valid) {
-        validatorHelper.enclosingElementHasEFragment(element,validatedElements,valid);
+        //validatorHelper.enclosingElementHasEFragment(element,validatedElements,valid);
 	}
 
 	@Override
-	public void process(Element element, EFragmentHolder holder) {
+	public void process(Element element, EComponentHolder holder) {
         TypeMirror elementType = annotationHelper.extractAnnotationClassParameter(element);
         if (elementType == null) {
             elementType = element.asType();
@@ -64,6 +65,7 @@ public class FragmentActivityHandler extends BaseAnnotationHandler<EFragmentHold
         JFieldRef beanField = ref(fieldName);
         JClass viewClass = codeModelHelper.typeMirrorToJClass(elementType, holder);
         JBlock block = holder.getInitBody();
-        block.assign(beanField,cast(viewClass,_this().invoke("getActivity")));
+        JClass proxy=refClass(ReflectInterfaceProxy.class);
+        block.assign(beanField,cast(viewClass,proxy.staticInvoke("newInstance").arg(viewClass.dotclass()).arg(holder.getContextRef())));
 	}
 }

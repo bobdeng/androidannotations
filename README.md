@@ -1,17 +1,17 @@
 #Use androidannotations to MVP
-##Declare a Interface of View
+###Declare a Interface of View
 ```
 public interface MyView{
   public void showName(String name);
 }
 ```
-##Declare bean interface
+###Declare bean interface
 ```
 public interface IMyBean(){
   public void getUserName();
 }
 ```
-##Implement bean
+###Implement bean
 ```
 @EBean
 public MyBean implements IMyBean(){
@@ -25,7 +25,7 @@ public MyBean implements IMyBean(){
   }
 }
 ```
-##In Activity,Fragment,Service or only a common Class
+###In Activity,Fragment,Service or only a common Class
 ```
 @EActivity(R.layout.layout_main)
 public MyActivity{
@@ -44,3 +44,4 @@ public MyActivity{
   }
 }
 ```
+[AndroidAnnotations](http://androidannotations.org/)

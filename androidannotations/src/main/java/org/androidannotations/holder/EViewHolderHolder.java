@@ -17,7 +17,6 @@ package org.androidannotations.holder;
 
 import com.sun.codemodel.*;
 
-import org.androidannotations.annotations.mvc.MVCAdapter;
 import org.androidannotations.process.ProcessHolder;
 
 import javax.lang.model.element.TypeElement;
@@ -29,29 +28,7 @@ import static com.sun.codemodel.JMod.PUBLIC;
 public class EViewHolderHolder extends EComponentWithViewSupportHolder {
 
     JVar initView;
-    @Override
-    public JMethod getOnDestroy() {
-        return null;
-    }
 
-    @Override
-    public JExpression getNewMvcAdapter() {
-        return _new(refClass(MVCAdapter.class)).arg(contextRef);
-    }
-
-    @Override
-    public boolean needMvcAdapter() {
-        return false;
-    }
-    public void createMvcAdapter(){
-        if(mvcAdapterField==null)
-        {
-            mvcAdapterField= generatedClass.field(PRIVATE,refClass(MVCAdapter.class),"mMvcAdapter");
-            JBlock init= getCreateMvcMethod().body();
-            init.assign(mvcAdapterField,getNewMvcAdapter());
-
-        }
-    }
     public EViewHolderHolder(ProcessHolder processHolder, TypeElement annotatedElement) throws Exception {
 		super(processHolder, annotatedElement);
 	}

@@ -16,7 +16,6 @@
 package org.androidannotations.holder;
 
 import com.sun.codemodel.*;
-import org.androidannotations.annotations.mvc.MVCAdapter;
 import org.androidannotations.process.ProcessHolder;
 import static com.sun.codemodel.JExpr._new;
 import static com.sun.codemodel.JExpr._this;
@@ -52,22 +51,7 @@ public class EViewHolder extends EComponentWithViewSupportHolder {
 	protected JMethod onFinishInflate;
 	protected JFieldVar alreadyInflated;
 
-    //palmwin start
-    @Override
-    public JMethod getOnDestroy() {
-        return null;
-    }
 
-    @Override
-    public JExpression getNewMvcAdapter() {
-        return _new(refClass(MVCAdapter.class)).arg(_this().invoke("getContext"));
-    }
-
-    @Override
-    public boolean needMvcAdapter() {
-        return false;
-    }
-    //palmwin end
 
 	public EViewHolder(ProcessHolder processHolder, TypeElement annotatedElement) throws Exception {
 		super(processHolder, annotatedElement);

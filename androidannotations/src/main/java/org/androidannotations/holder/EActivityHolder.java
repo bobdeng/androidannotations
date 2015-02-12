@@ -27,7 +27,6 @@ import com.sun.codemodel.JMethod;
 import com.sun.codemodel.JMod;
 import com.sun.codemodel.JType;
 import com.sun.codemodel.JVar;
-import org.androidannotations.annotations.mvc.MVCAdapter;
 import org.androidannotations.api.SdkVersionHelper;
 import org.androidannotations.helper.ActionBarSherlockHelper;
 import org.androidannotations.helper.ActivityIntentBuilder;
@@ -95,40 +94,6 @@ public class EActivityHolder extends EComponentWithViewSupportHolder implements 
 	private JBlock onStopBeforeSuperBlock;
 	private JBlock onPauseBeforeSuperBlock;
 
-    //palmwin start
-    private JMethod onDestroy;
-    private JMethod onRegister;
-    public JMethod getOnDestroy(){
-        if(onDestroy==null){
-            onDestroy = generatedClass.method(PUBLIC, codeModel().VOID, "onDestroy");
-            onDestroy.annotate(Override.class);
-            JBlock onDestroyBody = onDestroy.body();
-            onDestroyBody.invoke(_super(), onDestroy);
-
-        }
-        return onDestroy;
-    }
-    public JMethod getOnRegister(){
-        /*
-        if(onRegister==null){
-            onRegister = generatedClass.method(PUBLIC, codeModel().VOID, "onDestroy");
-            onRegister.annotate(Override.class);
-            JBlock onRegisterBody = onRegister.body();
-            onRegisterBody.invoke(_super(), onRegister);
-
-        }*/
-        return this.getOnCreate();
-    }
-
-    @Override
-    public JExpression getNewMvcAdapter() {
-        return _new(refClass(MVCAdapter.class)).arg(_this());
-    }
-    @Override
-    public boolean needMvcAdapter() {
-        return true;
-    }
-    //palmwin end
 	public EActivityHolder(ProcessHolder processHolder, TypeElement annotatedElement, AndroidManifest androidManifest) throws Exception {
 		super(processHolder, annotatedElement);
 		instanceStateHolder = new InstanceStateHolder(this);
@@ -747,7 +712,11 @@ public class EActivityHolder extends EComponentWithViewSupportHolder implements 
 
 	@Override
 	public JBlock getOnDestroyBeforeSuperBlock() {
-		return this.getOnDestroy().body();
+		if(onDestroyBeforeSuperBlock==null)
+        {
+            this.setOnDestroy();
+        }
+        return onDestroyBeforeSuperBlock;
 	}
 
 	@Override

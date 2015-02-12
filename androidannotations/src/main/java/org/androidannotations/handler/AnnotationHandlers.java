@@ -29,7 +29,6 @@ import org.androidannotations.holder.GeneratedClassHolder;
 import org.androidannotations.model.AndroidRes;
 import org.androidannotations.model.AndroidSystemServices;
 import org.androidannotations.model.AnnotationElements;
-import org.androidannotations.palmwin.*;
 import org.androidannotations.process.ProcessHolder;
 import org.androidannotations.rclass.IRClass;
 
@@ -152,18 +151,12 @@ public class AnnotationHandlers {
 		add(new SupposeBackgroundHandler(processingEnvironment));
 
         //handwin
-        add(new EActionHandler(processingEnvironment));
-        add(new InvokeHandler(processingEnvironment));
-        add(new ActionHandler(processingEnvironment));
-        add(new InvokeMethodHandler(processingEnvironment));
-        add(new ResponseHandler(processingEnvironment));
-        add(new ResponseMethodHandler(processingEnvironment));
-        add(new EntityHandler(processingEnvironment));
-        add(new EventHandler(processingEnvironment));
         add(new EViewHolderHandler(processingEnvironment));
         add(new ViewInterfaceHandler(processingEnvironment));
-        add(new FragmentActivityHandler(processingEnvironment));
-	}
+        add(new ContextEventHandler(processingEnvironment));
+        add(new EIntentHandler(processingEnvironment));
+        add(new EIntentExtraHandler(processingEnvironment));
+ 	}
 
 	public void add(AnnotationHandler<? extends GeneratedClassHolder> annotationHandler) {
 		annotationHandlers.add(annotationHandler);

@@ -20,7 +20,7 @@ import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EView;
 import org.androidannotations.annotations.NonConfigurationInstance;
 import org.androidannotations.annotations.ViewInterface;
-import org.androidannotations.api.ViewInterfaceProxy;
+import org.androidannotations.api.ReflectInterfaceProxy;
 import org.androidannotations.helper.APTCodeModelHelper;
 import org.androidannotations.helper.CanonicalNameConstants;
 import org.androidannotations.helper.TargetAnnotationHelper;
@@ -63,14 +63,12 @@ public class ViewInterfaceHandler extends BaseAnnotationHandler<EComponentHolder
         }
         String fieldName = element.getSimpleName().toString();
         String typeQualifiedName = elementType.toString();
-        JClass injectedClass = refClass(typeQualifiedName + GENERATION_SUFFIX);
+        //JClass injectedClass = refClass(typeQualifiedName + GENERATION_SUFFIX);
         JFieldRef beanField = ref(fieldName);
         JClass viewClass = codeModelHelper.typeMirrorToJClass(elementType, holder);
         JBlock block = holder.getInitBody();
         JExpression viewField=holder.getViewField();
-        //JConditional ifInstance= block._if(viewField._instanceof(viewClass));
-        //ifInstance._then().assign(beanField,cast(viewClass,viewField));
-        JClass proxy=refClass(ViewInterfaceProxy.class);
+        JClass proxy=refClass(ReflectInterfaceProxy.class);
         block.assign(beanField,cast(viewClass,proxy.staticInvoke("newInstance").arg(viewClass.dotclass()).arg(viewField)));
 	}
 }
