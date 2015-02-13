@@ -9,32 +9,34 @@ import java.lang.reflect.Proxy;
  */
 public class ReflectInterfaceProxy implements InvocationHandler {
     Object obj;
-    public ReflectInterfaceProxy(Object obj){
-        this.obj=obj;
+
+    public ReflectInterfaceProxy(Object obj) {
+        this.obj = obj;
     }
-    public static Object newInstance(Class interfaceClass,Object viewObject) {
-        return Proxy.newProxyInstance(interfaceClass.getClassLoader(),new Class[]{interfaceClass},new ReflectInterfaceProxy(viewObject));
+
+    public static Object newInstance(Class interfaceClass, Object viewObject) {
+        return Proxy.newProxyInstance(interfaceClass.getClassLoader(), new Class[]{interfaceClass}, new ReflectInterfaceProxy(viewObject));
     }
+
     @Override
     public Object invoke(Object o, Method method, Object[] objects) throws Throwable {
-        Class[] args=method.getParameterTypes();
+        Class[] args = method.getParameterTypes();
 
-        Method targetMethod=getMethod(obj.getClass(),method.getName(),args);
-        if(targetMethod==null){
-            targetMethod=getMethod(obj.getClass().getSuperclass(),method.getName(),args);
+        Method targetMethod = getMethod(obj.getClass(), method.getName(), args);
+        if (targetMethod == null) {
+            targetMethod = getMethod(obj.getClass().getSuperclass(), method.getName(), args);
         }
-        if(targetMethod!=null){
+        if (targetMethod != null) {
             targetMethod.setAccessible(true);
-            return targetMethod.invoke(obj,objects);
-        }else{
-            System.out.println("response method not implement:"+method.getName());
+            return targetMethod.invoke(obj, objects);
         }
         return null;
     }
-    private Method getMethod(Class clz,String methodName,Class[] args){
-        try{
-            return clz.getDeclaredMethod(methodName,args);
-        }catch(Exception e){
+
+    private Method getMethod(Class clz, String methodName, Class[] args) {
+        try {
+            return clz.getDeclaredMethod(methodName, args);
+        } catch (Exception e) {
             return null;
         }
     }
