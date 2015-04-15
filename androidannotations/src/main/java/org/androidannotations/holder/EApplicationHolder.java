@@ -58,9 +58,9 @@ public class EApplicationHolder extends EComponentHolder {
 		JMethod onCreate = generatedClass.method(PUBLIC, codeModel().VOID, "onCreate");
 		onCreate.annotate(Override.class);
 		JBlock onCreateBody = onCreate.body();
+        onCreateBody.invoke(_super(), onCreate);
 		onCreateBody.assign(staticInstanceField, _this());
 		onCreateBody.invoke(getInit());
-		onCreateBody.invoke(_super(), onCreate);
 	}
 
 	@Override
