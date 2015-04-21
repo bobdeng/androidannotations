@@ -38,7 +38,7 @@ import java.lang.annotation.Target;
  * <pre>
  * &#064;WindowFeature({ Window.FEATURE_NO_TITLE, Window.FEATURE_INDETERMINATE_PROGRESS })
  * &#064;EActivity
- * public class MyActivity extends Activity {
+ * public class MyActivity extends BeanActivity {
  * 
  * }
  * </pre>

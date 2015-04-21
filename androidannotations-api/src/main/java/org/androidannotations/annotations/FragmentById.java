@@ -51,7 +51,7 @@ import java.lang.annotation.Target;
  * 
  * 
  * &#064;EActivity(R.layout.main)
- * public class MyActivity extends Activity {
+ * public class MyActivity extends BeanActivity {
  * 
  * // all injected fragment will be the same
  * 

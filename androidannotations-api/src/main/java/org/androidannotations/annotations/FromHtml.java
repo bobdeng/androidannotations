@@ -40,7 +40,7 @@ import java.lang.annotation.Target;
  * 
  * <pre>
  * &#064;EActivity(R.layout.main)
- * public class MyActivity extends Activity {
+ * public class MyActivity extends BeanActivity {
  * 
  * 	&#064;ViewById(R.id.my_text_view)
  * 	&#064;FromHtml(R.string.hello_html)

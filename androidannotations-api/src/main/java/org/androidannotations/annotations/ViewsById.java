@@ -39,7 +39,7 @@ import java.lang.annotation.Target;
  *
  * <pre>
  * &#064;EActivity(R.layout.main)
- * public class MyActivity extends Activity {
+ * public class MyActivity extends BeanActivity {
  *
  * 	// Injects R.id.edit1 and R.id.edit2 into the List.
  * 	&#064;ViewsById({R.id.edit1, R.id.edit2})

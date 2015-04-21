@@ -62,7 +62,7 @@ public class RootContextHanlder extends BaseAnnotationHandler<EComponentWithView
 		JExpression contextRef = holder.getContextRef();
 
 		if (CanonicalNameConstants.CONTEXT.equals(typeQualifiedName)) {
-			body.assign(ref(fieldName), contextRef);
+           body.assign(ref(fieldName), contextRef);
 		} else {
             JClass extendingContextClass = holder.refClass(typeQualifiedName);
             JConditional cond = body._if(holder.getContextRef()._instanceof(extendingContextClass));

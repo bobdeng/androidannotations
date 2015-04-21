@@ -42,7 +42,7 @@ import java.lang.annotation.Target;
  * <pre>
  * &#064;EActivity(R.layout.main)
  * &#064;OptionsMenu({ R.menu.my_menu1, R.menu.my_menu2 })
- * public class MyActivity extends Activity {
+ * public class MyActivity extends BeanActivity {
  * 
  * 	&#064;OptionsMenuItem
  * 	MenuItem menuRefresh;

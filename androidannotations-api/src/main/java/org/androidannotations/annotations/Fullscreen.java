@@ -31,7 +31,7 @@ import java.lang.annotation.Target;
  * <pre>
  * &#064;Fullscreen
  * &#064;EActivity
- * public class MyActivity extends Activity {
+ * public class MyActivity extends BeanActivity {
  * 
  * }
  * </pre>

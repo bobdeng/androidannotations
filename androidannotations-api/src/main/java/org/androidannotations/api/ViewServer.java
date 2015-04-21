@@ -59,7 +59,7 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
  * </p>
  * 
  * <pre>
- * public class MyActivity extends Activity {
+ * public class MyActivity extends BeanActivity {
  * 	public void onCreate(Bundle savedInstanceState) {
  * 		super.onCreate(savedInstanceState);
  * 		// Set content view, etc.

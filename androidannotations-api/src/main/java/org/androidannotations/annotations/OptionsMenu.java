@@ -29,7 +29,7 @@ import java.lang.annotation.Target;
  * The annotation value should be one or several R.menu.* fields.
  * </p>
  * <p>
- * <b>Note:</b> Fragment menus are compounds with parent Activity menus
+ * <b>Note:</b> Fragment menus are compounds with parent BeanActivity menus
  * </p>
  * <blockquote>
  * 
@@ -38,7 +38,7 @@ import java.lang.annotation.Target;
  * <pre>
  * &#064;EActivity(R.layout.main)
  * &#064;OptionsMenu({ R.menu.my_menu1, R.menu.my_menu2 })
- * public class MyActivity extends Activity {
+ * public class MyActivity extends BeanActivity {
  * 
  * }
  * 

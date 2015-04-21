@@ -49,7 +49,7 @@ import java.lang.annotation.Target;
  * 
  * <pre>
  * &#064;EActivity(R.layout.main)
- * public class MyActivity extends Activity {
+ * public class MyActivity extends BeanActivity {
  * 
  * 	public void launchActivity() {
  * 		// Note the use of generated class instead of original one
@@ -58,7 +58,7 @@ import java.lang.annotation.Target;
  * }
  * 
  * &#064;EActivity(R.layout.main)
- * public class MyActivityTwo extends Activity {
+ * public class MyActivityTwo extends BeanActivity {
  * 
  * 	&#064;Bean
  * 	MyBean myBean;

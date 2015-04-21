@@ -122,6 +122,7 @@ public class AnnotationHandlers {
 
 		add(new IgnoredWhenDetachedHandler(processingEnvironment));
 		/* After injection methods must be after injections */
+
 		add(new AfterInjectHandler(processingEnvironment));
 		add(new AfterExtrasHandler(processingEnvironment));
 		add(new AfterViewsHandler(processingEnvironment));
@@ -156,6 +157,8 @@ public class AnnotationHandlers {
         add(new ContextEventHandler(processingEnvironment));
         add(new EIntentHandler(processingEnvironment));
         add(new EIntentExtraHandler(processingEnvironment));
+        add(new EViewInterfaceMethodHandler(processingEnvironment));
+        add(new EViewInterfaceHandler(processingEnvironment));
  	}
 
 	public void add(AnnotationHandler<? extends GeneratedClassHolder> annotationHandler) {

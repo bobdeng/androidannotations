@@ -45,7 +45,7 @@ import java.lang.annotation.Target;
  * 
  * <pre>
  * &#064;EActivity(R.layout.main)
- * public class MyActivityTwo extends Activity {
+ * public class MyActivityTwo extends BeanActivity {
  * 
  * 	&#064;ViewById
  * 	TextView myTextView;

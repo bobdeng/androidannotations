@@ -51,7 +51,7 @@ import java.lang.annotation.Target;
  * 
  * <pre>
  * &#064;EActivity
- * public class MyActivity extends Activity {
+ * public class MyActivity extends BeanActivity {
  * 
  * 	&#064;Click
  * 	void buttonClicked() {
@@ -62,7 +62,7 @@ import java.lang.annotation.Target;
  * }
  * 
  * &#064;EActivity
- * public class MyExtraActivity extends Activity {
+ * public class MyExtraActivity extends BeanActivity {
  * 
  * 	&#064;Extra
  * 	String myMessage;

@@ -43,7 +43,7 @@ import java.lang.annotation.Target;
  * 
  * <pre>
  * &#064;EActivity
- * public class MyActivity extends Activity {
+ * public class MyActivity extends BeanActivity {
  * 
  * 	// UserDao is a Dao&lt;User, Long&gt;
  * 	&#064;OrmLiteDao(helper = DatabaseHelper.class, model = User.class)

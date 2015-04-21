@@ -29,7 +29,7 @@ import java.lang.annotation.Target;
  * This field may not be injected at runtime if the context used to create the
  * bean is not of the appropriate type. For example, if you create a new
  * instance of the bean using a Service context, and you use {@link RootContext}
- * on a field that extends Activity, this field will be null at runtime.
+ * on a field that extends BeanActivity, this field will be null at runtime.
  * </p>
  * <blockquote>
  *
@@ -44,7 +44,7 @@ import java.lang.annotation.Target;
  * 
  * 	// Only injected if the root context is an activity
  * 	&#064;RootContext
- * 	Activity activity;
+ * 	BeanActivity activity;
  * 
  * 	// Only injected if the root context is a service
  * 	&#064;RootContext
@@ -61,4 +61,5 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.CLASS)
 @Target(ElementType.FIELD)
 public @interface RootContext {
+    boolean applicationContext() default false;
 }

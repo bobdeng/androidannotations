@@ -26,6 +26,7 @@ import javax.lang.model.element.TypeElement;
 import javax.lang.model.util.ElementFilter;
 
 import com.sun.codemodel.*;
+import org.androidannotations.annotations.EBean;
 import org.androidannotations.process.ProcessHolder;
 
 public class EBeanHolder extends EComponentWithViewSupportHolder {
@@ -37,10 +38,11 @@ public class EBeanHolder extends EComponentWithViewSupportHolder {
 	private JMethod constructor;
 	public EBeanHolder(ProcessHolder processHolder, TypeElement annotatedElement) throws Exception {
 		super(processHolder, annotatedElement);
-		setConstructor();
+        EBean ebean=annotatedElement.getAnnotation(EBean.class);
+        setConstructor(ebean.scope()== EBean.Scope.Singleton);
 	}
 
-	private void setConstructor() {
+	private void setConstructor(boolean singleTone) {
 		constructor = generatedClass.constructor(PRIVATE);
 		JVar constructorContextParam = constructor.param(classes().CONTEXT, "context");
         JVar constructorViewParam = constructor.param(classes().OBJECT,"view");
@@ -50,8 +52,14 @@ public class EBeanHolder extends EComponentWithViewSupportHolder {
 		if (superConstructor.getParameters().size() == 1) {
 			constructorBody.invoke("super").arg(constructorContextParam);
 		}
-		constructorBody.assign(getContextField(), constructorContextParam);
-        constructorBody.assign(getViewField(),constructorViewParam);
+        if(singleTone)
+        {
+            constructorBody.assign(getContextField(), constructorContextParam.invoke("getApplicationContext"));
+            constructorBody.assign(getViewField(),_null());
+        }else{
+            constructorBody.assign(getContextField(), constructorContextParam);
+            constructorBody.assign(getViewField(),constructorViewParam);
+        }
 	}
 
     public JAssignmentTarget getViewField() {

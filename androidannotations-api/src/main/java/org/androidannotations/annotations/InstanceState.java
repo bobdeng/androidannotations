@@ -32,7 +32,7 @@ import java.lang.annotation.Target;
  * 
  * <pre>
  * &#064;EActivity
- * public class MyActivity extends Activity {
+ * public class MyActivity extends BeanActivity {
  * 
  * 	&#064;InstanceState
  * 	int someId;

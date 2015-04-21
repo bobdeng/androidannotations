@@ -32,7 +32,7 @@ import java.lang.annotation.Target;
  * </p>
  * <p>
  * <b>Caution:</b> While you can annotate any field, you should never annotate a
- * field that is tied to the Activity, such as a Drawable, an Adapter, a View or
+ * field that is tied to the BeanActivity, such as a Drawable, an Adapter, a View or
  * any other object that's associated with a Context. If you do, it will leak
  * all the views and resources of the original activity instance. (Leaking
  * resources means that your application maintains a hold on them and they
@@ -49,7 +49,7 @@ import java.lang.annotation.Target;
  *
  * <pre>
  * &#064;EActivity(R.layout.main)
- * public class MyActivity extends Activity {
+ * public class MyActivity extends BeanActivity {
  * 
  * 	&#064;NonConfigurationInstance
  * 	Bitmap someBitmap;

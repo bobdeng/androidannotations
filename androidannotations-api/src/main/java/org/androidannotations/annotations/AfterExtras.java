@@ -38,7 +38,7 @@ import java.lang.annotation.Target;
  *
  * <pre>
  * &#064;EActivity(R.layout.main)
- * public class MyActivity extends Activity {
+ * public class MyActivity extends BeanActivity {
  * 
  * 	&#064;Extra
  * 	String myExtra;

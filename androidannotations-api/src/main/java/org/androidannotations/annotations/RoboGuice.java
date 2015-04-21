@@ -22,7 +22,7 @@ import java.lang.annotation.Target;
 
 /**
  * <p>
- * Should be used on Activity classes that use the RoboGuice framework.
+ * Should be used on BeanActivity classes that use the RoboGuice framework.
  * </p>
  * <blockquote>
  * 
@@ -31,7 +31,7 @@ import java.lang.annotation.Target;
  * <pre>
  * &#064;EActivity(R.layout.main)
  * &#064;RoboGuice({ AstroListener.class, AnotherListener.class })
- * public class AstroGirl extends Activity {
+ * public class AstroGirl extends BeanActivity {
  * 
  * 	&#064;ViewById
  * 	EditText edit;
@@ -52,7 +52,7 @@ import java.lang.annotation.Target;
  * 	Context context;
  * 
  * 	public void doSomethingOnResume(@Observes OnResumeEvent onResume) {
- * 		Toast.makeText(context, &quot;Activity has been resumed&quot;, Toast.LENGTH_LONG).show();
+ * 		Toast.makeText(context, &quot;BeanActivity has been resumed&quot;, Toast.LENGTH_LONG).show();
  * 	}
  * }
  * </pre>
