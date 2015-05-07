@@ -20,6 +20,7 @@ public class ReflectInterfaceProxy implements InvocationHandler {
 
     @Override
     public Object invoke(Object o, Method method, Object[] objects) throws Throwable {
+        if(o==null ) return null;
         Class[] args = method.getParameterTypes();
 
         Method targetMethod = getMethod(obj.getClass(), method.getName(), args);
