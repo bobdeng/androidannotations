@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .project
 target
 *.iml
@@ -5,3 +6,5 @@ target
 *.iws
 *.idea
 .setting
+.DS_Store
+rebel.xml

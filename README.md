@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #Use androidannotations to MVP
 ###Declare a Interface of View
 ```
@@ -90,3 +91,16 @@ public void onEvent1(String action){
 ```
 
 [AndroidAnnotations](http://androidannotations.org/)
+=======
+# Fast Android Development. Easy maintenance.
+
+[![Android Annotations Logo](https://github.com/excilys/androidannotations/wiki/img/aa-logo.png)](https://github.com/excilys/androidannotations/wiki/Home) 
+
+**AndroidAnnotations** is an Open Source framework that **speeds up** Android development.
+It takes care of the **plumbing**, and lets you concentrate on what's really important. By **simplifying** your code, it facilitates its **maintenance**.
+
+### [**Documentation**](https://github.com/excilys/androidannotations/wiki/Home)
+
+[![Build Status](https://travis-ci.org/excilys/androidannotations.svg?branch=develop)](https://travis-ci.org/excilys/androidannotations/builds) [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-AndroidAnnotations-brightgreen.svg?style=flat)](http://android-arsenal.com/details/1/128)
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/excilys/androidannotations?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+>>>>>>> dd05c0576d7b8da39d46c5589ee672f2d2c6c556
