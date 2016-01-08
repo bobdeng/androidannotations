@@ -5,10 +5,13 @@ target
 gen
 bin
 
+<<<<<<< HEAD
 #Gradle
 build
 .gradle
 
+=======
+>>>>>>> 96090578b57011fab18dcfe714da38bca2899feb
 # Eclipse
 .classpath
 .apt_generated
@@ -22,4 +25,7 @@ org.maven.ide.eclipse.prefs
 *.iws
 *.iml
 *.idea
+<<<<<<< HEAD
 local.properties
+=======
+>>>>>>> 96090578b57011fab18dcfe714da38bca2899feb

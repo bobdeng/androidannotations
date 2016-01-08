@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 #Use androidannotations to MVP
 ###Declare a Interface of View
 ```
@@ -94,6 +95,12 @@ public void onEvent1(String action){
 =======
 # Fast Android Development. Easy maintenance.
 
+=======
+# Fast Android Development. Easy maintenance.
+
+### Note: we presented AndroidAnnotations at [Devoxx 2012](http://devoxx.com/display/DV12/Android+DDD+%28Diet+Driven+Development%29%21), video available on [Parleys.com](http://www.parleys.com/#st=5&id=3550)!
+
+>>>>>>> 96090578b57011fab18dcfe714da38bca2899feb
 [![Android Annotations Logo](https://github.com/excilys/androidannotations/wiki/img/aa-logo.png)](https://github.com/excilys/androidannotations/wiki/Home) 
 
 **AndroidAnnotations** is an Open Source framework that **speeds up** Android development.
@@ -101,6 +108,10 @@ It takes care of the **plumbing**, and lets you concentrate on what's really imp
 
 ### [**Documentation**](https://github.com/excilys/androidannotations/wiki/Home)
 
+<<<<<<< HEAD
 [![Build Status](https://travis-ci.org/excilys/androidannotations.svg?branch=develop)](https://travis-ci.org/excilys/androidannotations/builds) [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-AndroidAnnotations-brightgreen.svg?style=flat)](http://android-arsenal.com/details/1/128)
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/excilys/androidannotations?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 >>>>>>> dd05c0576d7b8da39d46c5589ee672f2d2c6c556
+=======
+[![githalytics.com alpha](https://cruel-carlota.pagodabox.com/a2b0e064a3f1d4fb3d5406cc596797f2 "githalytics.com")](http://githalytics.com/excilys/androidannotations)
+>>>>>>> 96090578b57011fab18dcfe714da38bca2899feb

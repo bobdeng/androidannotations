@@ -4,26 +4,41 @@ buildscript {
     }
     dependencies {
         // replace with the current version of the Android plugin
+<<<<<<< HEAD
         classpath 'com.android.tools.build:gradle:1.2.3'
         // the latest version of the android-apt plugin
         classpath 'com.neenbedankt.gradle.plugins:android-apt:1.4'
+=======
+        classpath 'com.android.tools.build:gradle:0.7+'
+        // the latest version of the android-apt plugin
+        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.1'
+>>>>>>> 96090578b57011fab18dcfe714da38bca2899feb
     }
 }
 
 repositories {
     mavenCentral()
+<<<<<<< HEAD
     mavenLocal()
 }
 
 apply plugin: 'com.android.application'
 apply plugin: 'com.neenbedankt.android-apt'
 def AAVersion = '4.0-SNAPSHOT' // change this to your desired version, for example the latest stable: 3.3.2
+=======
+}
+
+apply plugin: 'android'
+apply plugin: 'android-apt'
+def AAVersion = '3.0'
+>>>>>>> 96090578b57011fab18dcfe714da38bca2899feb
 
 dependencies {
     apt "org.androidannotations:androidannotations:$AAVersion"
     compile "org.androidannotations:androidannotations-api:$AAVersion"
 }
 
+<<<<<<< HEAD
 apt {
     arguments {
         androidManifestFile variant.outputs[0].processResources.manifestFile
@@ -45,5 +60,24 @@ android {
     defaultConfig {
         minSdkVersion 9
         targetSdkVersion 22
+=======
+android {
+    compileSdkVersion 18
+    buildToolsVersion "18.0.1"
+
+    defaultConfig {
+        minSdkVersion 9
+        targetSdkVersion 18
+    }
+
+    sourceSets {
+        main {
+            manifest.srcFile 'AndroidManifest.xml'
+            java.srcDirs = ['src/main/java']
+            resources.srcDirs = ['res']
+            res.srcDirs = ['res']
+            assets.srcDirs = ['assets']
+        }
+>>>>>>> 96090578b57011fab18dcfe714da38bca2899feb
     }
 }

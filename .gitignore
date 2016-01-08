@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 .project
 target
 *.iml
@@ -6,5 +7,7 @@ target
 *.iws
 *.idea
 .setting
+=======
+>>>>>>> 96090578b57011fab18dcfe714da38bca2899feb
 .DS_Store
 rebel.xml
